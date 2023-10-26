@@ -39,15 +39,11 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             binding.progressBar.isVisible = true
             try {
-                val response = when(dataType){
-                    TODO->{MyRetrofit.apiService.getTodos()}
-                    ALBUM->{MyRetrofit.apiService.getAlbums()}
-                    else -> {MyRetrofit.apiService.getPosts()}
-                }
+                val response = Repository.getData(dataType)
                 if(response.isSuccessful && response.body() != null) {
                     Log.e(TAG, "MY $dataType : ${response.body()}")
                 } else {
-                    Log.e(TAG, "$UNSUCCESSFUL_MESSAGE")
+                    Log.e(TAG, UNSUCCESSFUL_MESSAGE)
                 }
                 binding.progressBar.isVisible = false
 

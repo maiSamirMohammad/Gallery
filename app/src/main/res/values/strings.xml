@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Retrofit</string>
+    <string name="todos">todos</string>
+    <string name="albums">albums</string>
+    <string name="posts">posts</string>
 </resources>

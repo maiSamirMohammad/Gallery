@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.example.retrofit.Constants.ALBUM
+import com.example.retrofit.Constants.Exception_MESSAGE
+import com.example.retrofit.Constants.POST
+import com.example.retrofit.Constants.TODO
+import com.example.retrofit.Constants.TAG
+import com.example.retrofit.Constants.UNSUCCESSFUL_MESSAGE
 import com.example.retrofit.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
-const val TAG = "RetrofitMainActivity"
-const val TODO = "TODOS"
-const val ALBUM = "ALBUMS"
-const val POST = "POSTS"
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -44,12 +47,12 @@ class MainActivity : AppCompatActivity() {
                 if(response.isSuccessful && response.body() != null) {
                     Log.e(TAG, "MY $dataType : ${response.body()}")
                 } else {
-                    Log.e(TAG, "Response not successful or data is null")
+                    Log.e(TAG, "$UNSUCCESSFUL_MESSAGE")
                 }
                 binding.progressBar.isVisible = false
 
             } catch(e:Exception) {
-                Log.e(TAG, "ExceptionNNNN: ${e.message}")
+                Log.e(TAG, "$Exception_MESSAGE: ${e.message}")
                 binding.progressBar.isVisible = false
             }
 

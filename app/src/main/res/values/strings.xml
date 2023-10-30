@@ -3,4 +3,9 @@
     <string name="todos">todos</string>
     <string name="albums">albums</string>
     <string name="posts">posts</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="my_albums">My Albums</string>
+    <string name="search_hint_album">Search in images..</string>
 </resources>

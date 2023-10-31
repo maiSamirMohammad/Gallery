@@ -1,16 +1,17 @@
-package com.example.retrofit
+package com.example.retrofit.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.example.retrofit.Constants.ALBUM
-import com.example.retrofit.Constants.Exception_MESSAGE
-import com.example.retrofit.Constants.POST
-import com.example.retrofit.Constants.TODO
-import com.example.retrofit.Constants.TAG
-import com.example.retrofit.Constants.UNSUCCESSFUL_MESSAGE
+import com.example.retrofit.data.Constants.ALBUM
+import com.example.retrofit.data.Constants.Exception_MESSAGE
+import com.example.retrofit.data.Constants.POST
+import com.example.retrofit.data.Constants.TODO
+import com.example.retrofit.data.Constants.TAG
+import com.example.retrofit.data.Constants.UNSUCCESSFUL_MESSAGE
+import com.example.retrofit.data.Repository
 import com.example.retrofit.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 

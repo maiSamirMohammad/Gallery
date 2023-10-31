@@ -1,4 +1,4 @@
-package com.example.retrofit
+package com.example.retrofit.data
 
 object Constants {
     const val TAG = "RetrofitMainActivity"

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.todos.setOnClickListener{
+     /*   binding.todos.setOnClickListener{
             getData(TODO)
         }
         binding.albums.setOnClickListener {
@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.posts.setOnClickListener {
             getData(POST)
-        }
+        }*/
     }
-    fun getData(dataType:String){
+   /* fun getData(dataType:String){
         lifecycleScope.launch {
             binding.progressBar.isVisible = true
             try {
@@ -54,5 +54,5 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-    }
+    }*/
 }

@@ -43,7 +43,6 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintStart_toEndOf="@+id/guideline_start"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
@@ -56,11 +55,13 @@
         android:queryHint="@string/search_hint_album"
         android:iconifiedByDefault="false"
         android:background="@drawable/search_background"
+        android:layout_marginTop="6dp"
         app:layout_constraintStart_toEndOf="@+id/guideline_start"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
         app:layout_constraintTop_toBottomOf="@id/divider"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_photos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -70,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_view"
-        tools:listitem="@layout/item_in_album"
+        tools:listitem="@layout/item_photo"
         />
 
 

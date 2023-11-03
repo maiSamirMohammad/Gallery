@@ -2,6 +2,7 @@ package com.example.retrofit.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.R
@@ -31,7 +32,12 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+        val currentAlbum=oldAlbumList[position]
         viewHolder.binding.title.text=oldAlbumList[position].title
+        viewHolder.binding.title.setOnClickListener {
+            val action =ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(currentAlbum.title)
+            androidx.navigation.Navigation.findNavController(viewHolder.binding.root).navigate(action)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

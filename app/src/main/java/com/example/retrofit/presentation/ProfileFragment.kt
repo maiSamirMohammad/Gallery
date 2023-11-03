@@ -30,7 +30,11 @@ class ProfileFragment : Fragment() {
         //setup recycler view
         profileAdapter  = ProfileAdapter()
         binding.recyclerviewAlbums.adapter=profileAdapter
-        profileAdapter.setData(profileViewModel.getAlbums())
+        profileViewModel.getAlbums().observe(viewLifecycleOwner){albums ->
+            if (albums!=null)
+                profileAdapter.setData(albums)
+        }
+
 
         return binding.root
     }

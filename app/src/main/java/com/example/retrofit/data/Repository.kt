@@ -2,15 +2,18 @@ package com.example.retrofit.data
 
 import com.example.retrofit.data.model.Album
 import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.IRepository
 
-object Repository {
-     fun getAlbums(): List<Album> {
+class Repository(/* TODO add service api in constructor*/) : IRepository {
+
+    // TODO call retrofit service
+     override fun getAlbums(): List<Album> {
         val album1 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
         val album2 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
         val album3 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
         return listOf(album1, album2, album3)
     }
-    fun getPhotos(): List<Photo> {
+    override fun getPhotos(): List<Photo> {
         val photo1 = Photo(
             albumId= 1,
             id= 1,

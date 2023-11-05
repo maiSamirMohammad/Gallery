@@ -24,7 +24,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
        //Getting viewModel ready
-        profileViewModelFactory=ProfileViewModelFactory(Repository)
+        profileViewModelFactory=ProfileViewModelFactory(Repository())
         profileViewModel =
             ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
         //setup recycler view

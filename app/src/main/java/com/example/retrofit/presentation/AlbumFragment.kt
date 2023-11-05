@@ -28,7 +28,7 @@ class AlbumFragment : Fragment() {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         binding.title.text=args.album
         //Getting viewModel ready
-        albumViewModelFactory=AlbumViewModelFactory(Repository)
+        albumViewModelFactory=AlbumViewModelFactory(Repository())
         albumViewModel =
             ViewModelProvider(this,albumViewModelFactory).get(AlbumViewModel::class.java)
         //setup recycler view

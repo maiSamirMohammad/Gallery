@@ -3,18 +3,33 @@ package com.example.retrofit.data
 import com.example.retrofit.data.model.Album
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.domain.IRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
-class Repository(/* TODO add service api in constructor*/) : IRepository {
+class Repository(
+/* TODO add service api in constructor*/
+     private val apiService: APIService=MyRetrofit.apiService
+
+) : IRepository {
+
 
     // TODO call retrofit service
-     override fun getAlbums(): List<Album> {
-        val album1 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
-        val album2 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
-        val album3 = Album(userId = 1, id = 1, title = "quidem molestiae enim")
-        return listOf(album1, album2, album3)
+     override suspend fun getAlbums(): Flow<List<Album>> {
+        return flow {
+            emit(
+                apiService.getAlbums()
+            )
+        }
     }
-    override fun getPhotos(): List<Photo> {
-        val photo1 = Photo(
+    override suspend fun getPhotos(): Flow<List<Photo>> {
+        return flow {
+            emit(
+                apiService.getPhotos()
+            )
+        }
+
+        }
+/*        val photo1 = Photo(
             albumId= 1,
             id= 1,
             title="accusamus beatae ad facilis cum similique qui sunt",
@@ -36,8 +51,8 @@ class Repository(/* TODO add service api in constructor*/) : IRepository {
             thumbnailUrl="https://via.placeholder.com/150/92c952"
         )
 
-        return listOf(photo1,photo2,photo3)
-    }
+        return listOf(photo1,photo2,photo3)*/
+    //}
 /*    suspend fun getData(dataType:String): Response<out List<Any>>{
         val response= when(dataType){
             Constants.TODO ->{

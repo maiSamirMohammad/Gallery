@@ -1,14 +1,21 @@
 package com.example.retrofit.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.example.retrofit.data.AlbumAPIState
+import com.example.retrofit.data.PhotoAPIState
 import com.example.retrofit.data.Repository
 import com.example.retrofit.databinding.FragmentAlbumBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class AlbumFragment : Fragment() {
@@ -34,9 +41,34 @@ class AlbumFragment : Fragment() {
         //setup recycler view
         albumAdapter  = AlbumAdapter()
         binding.recyclerviewPhotos.adapter=albumAdapter
-        albumViewModel.getPhotos().observe(viewLifecycleOwner){photos ->
+       /* albumViewModel.getPhotos().observe(viewLifecycleOwner){photos ->
             if (photos!=null)
                 albumAdapter.setData(photos)
+        }*/
+        albumViewModel.getPhotos()
+        lifecycleScope.launch {
+            albumViewModel.photos.collectLatest {apiResult ->
+                when(apiResult)  {
+                    is PhotoAPIState.Loading ->{
+                        binding.progressBar.visibility= View.VISIBLE
+
+                    }
+                    is PhotoAPIState.Success ->{
+                        binding.progressBar.visibility= View.GONE
+                        albumAdapter.setData(apiResult.data)
+                    }
+                    is PhotoAPIState.Failure ->{
+                        binding.progressBar.visibility= View.GONE
+                        Log.e("TAG", "error==========:${apiResult.throwable.message} ")
+                        Snackbar.make(activity?.window?.decorView!!.rootView,
+                            "Try another time as ${apiResult.throwable.message}",
+                            Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(resources.getColor(android.R.color.holo_orange_light))
+                            .show()
+                    }
+                }
+
+            }
         }
         return binding.root
     }

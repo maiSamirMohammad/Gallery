@@ -1,13 +1,11 @@
 package com.example.retrofit.presentation
 
-import android.R
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import coil.api.load
+import com.example.retrofit.R
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.ItemPhotoBinding
 
@@ -39,12 +37,18 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         //viewHolder.binding.imageView
         val url: String = currentAlbum.url
 
-        Glide
+/*        Glide
             .with(viewHolder.binding.root)
             .load(url)
             .centerCrop()
             //.placeholder(R.drawable.loading_animation)
-            .into(viewHolder.binding.imageView)
+            .into(viewHolder.binding.imageView)*/
+        url.let {
+            binding.imageView.load(url) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+            }
+        }
 
     }
 

@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.retrofit.data.AlbumAPIState
 import com.example.retrofit.data.PhotoAPIState
 import com.example.retrofit.data.Repository
 import com.example.retrofit.databinding.FragmentAlbumBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-
 
 class AlbumFragment : Fragment() {
 
@@ -41,17 +39,12 @@ class AlbumFragment : Fragment() {
         //setup recycler view
         albumAdapter  = AlbumAdapter()
         binding.recyclerviewPhotos.adapter=albumAdapter
-       /* albumViewModel.getPhotos().observe(viewLifecycleOwner){photos ->
-            if (photos!=null)
-                albumAdapter.setData(photos)
-        }*/
         albumViewModel.getPhotos()
         lifecycleScope.launch {
             albumViewModel.photos.collectLatest {apiResult ->
                 when(apiResult)  {
                     is PhotoAPIState.Loading ->{
                         binding.progressBar.visibility= View.VISIBLE
-
                     }
                     is PhotoAPIState.Success ->{
                         binding.progressBar.visibility= View.GONE
@@ -67,12 +60,10 @@ class AlbumFragment : Fragment() {
                             .show()
                     }
                 }
-
             }
         }
         return binding.root
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

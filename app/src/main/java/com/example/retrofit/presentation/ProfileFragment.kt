@@ -42,7 +42,6 @@ class ProfileFragment : Fragment() {
                 when(apiResult)  {
                     is AlbumAPIState.Loading ->{
                         binding.progressBar.visibility= View.VISIBLE
-
                     }
                     is AlbumAPIState.Success ->{
                         binding.progressBar.visibility= View.GONE
@@ -58,11 +57,8 @@ class ProfileFragment : Fragment() {
                             .show()
                     }
                 }
-
             }
         }
-
-
         return binding.root
     }
 
@@ -70,5 +66,4 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

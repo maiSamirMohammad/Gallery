@@ -1,16 +1,13 @@
 package com.example.retrofit.presentation
 
-import android.R
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import coil.api.load
+import com.example.retrofit.R
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.ItemPhotoBinding
-
 
 class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     lateinit var binding: ItemPhotoBinding
@@ -36,26 +33,21 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         val currentAlbum=oldPhotoList[position]
-        //viewHolder.binding.imageView
         val url: String = currentAlbum.url
-
-        Glide
-            .with(viewHolder.binding.root)
-            .load(url)
-            .centerCrop()
-            //.placeholder(R.drawable.loading_animation)
-            .into(viewHolder.binding.imageView)
-
+        url.let {
+            binding.imageView.load(url) {
+                placeholder(R.drawable.loading_animation)
+                error(R.drawable.ic_broken_image)
+            }
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = oldPhotoList.size
-
     fun setData(newPhotoList:List<Photo>){
         val diffUtil=MyPhotosDiffCallback(oldPhotoList,newPhotoList)
         val diffResults= DiffUtil.calculateDiff(diffUtil)
         oldPhotoList=newPhotoList
         diffResults.dispatchUpdatesTo(this)
     }
-
 }

@@ -7,6 +7,7 @@ object Constants {
     const val POST = "POSTS"
     const val TODO_END_POINT = "/todos"
     const val ALBUM_END_POINT = "/albums"
+    const val PHOTO_END_POINT = "/photos"
     const val POST_END_POINT = "/posts"
     const val BASE_URL = "https://jsonplaceholder.typicode.com"
     const val Exception_MESSAGE = "ExceptionNNNN"

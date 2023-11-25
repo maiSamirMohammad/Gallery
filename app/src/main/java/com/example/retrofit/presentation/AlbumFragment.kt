@@ -6,24 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.retrofit.data.PhotoAPIState
-import com.example.retrofit.data.Repository
 import com.example.retrofit.databinding.FragmentAlbumBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class AlbumFragment : Fragment() {
 
     private var _binding: FragmentAlbumBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     val args:AlbumFragmentArgs by navArgs()
-    private lateinit var  albumViewModelFactory:AlbumViewModelFactory
-    private lateinit var  albumViewModel:AlbumViewModel
+    private val albumViewModel:AlbumViewModel by viewModels()
     private lateinit var  albumAdapter:AlbumAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +33,6 @@ class AlbumFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         binding.title.text=args.album
-        //Getting viewModel ready
-        albumViewModelFactory=AlbumViewModelFactory(Repository())
-        albumViewModel =
-            ViewModelProvider(this,albumViewModelFactory).get(AlbumViewModel::class.java)
         //setup recycler view
         albumAdapter  = AlbumAdapter()
         binding.recyclerviewPhotos.adapter=albumAdapter

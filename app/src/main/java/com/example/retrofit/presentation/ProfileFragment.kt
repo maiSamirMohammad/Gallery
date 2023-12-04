@@ -6,21 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.retrofit.data.AlbumAPIState
-import com.example.retrofit.data.Repository
 import com.example.retrofit.databinding.FragmentProfileBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var  profileViewModelFactory:ProfileViewModelFactory
-    private lateinit var  profileViewModel:ProfileViewModel
+    private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var  profileAdapter:ProfileAdapter
 
     override fun onCreateView(
@@ -29,10 +29,6 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-       //Getting viewModel ready
-        profileViewModelFactory=ProfileViewModelFactory(Repository())
-        profileViewModel =
-            ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
         //setup recycler view
         profileAdapter  = ProfileAdapter()
         binding.recyclerviewAlbums.adapter=profileAdapter

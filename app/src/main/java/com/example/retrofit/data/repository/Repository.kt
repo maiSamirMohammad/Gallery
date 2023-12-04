@@ -1,14 +1,16 @@
-package com.example.retrofit.data
+package com.example.retrofit.data.repository
 
 import com.example.retrofit.data.model.Album
 import com.example.retrofit.data.model.Photo
+import com.example.retrofit.data.remote.APIService
 import com.example.retrofit.domain.IRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class Repository(
+class Repository @Inject constructor(
 /* TODO add service api in constructor*/
-     private val apiService: APIService=MyRetrofit.apiService
+     private val apiService: APIService
 ) : IRepository {
     
     // TODO call retrofit service

@@ -32,8 +32,8 @@ class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        val currentAlbum=oldPhotoList[position]
-        val url: String = currentAlbum.url
+        val currentPhoto=oldPhotoList[position]
+        val url: String = currentPhoto.url
         url.let {
             binding.imageView.load(url) {
                 placeholder(R.drawable.loading_animation)

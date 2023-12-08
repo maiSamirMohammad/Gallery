@@ -1,7 +1,10 @@
 package com.example.retrofit.di
 
+import android.app.Application
 import com.example.retrofit.data.remote.APIService
 import com.example.retrofit.data.Constants
+import com.example.retrofit.data.local.AppDataBase
+import com.example.retrofit.data.local.PhotoDao
 import com.example.retrofit.data.repository.Repository
 import com.example.retrofit.domain.IRepository
 import dagger.Module
@@ -25,11 +28,10 @@ object AppModule {
             .build()
             .create(APIService::class.java)
     }
-
- /*   @Provides
+    @Provides
     @Singleton
-    fun provideRepository(apiService: APIService): IRepository{
-        return Repository(apiService)
-    }*/
-
+    fun providePhotoDao(appContext:Application): PhotoDao {
+        val db: AppDataBase =AppDataBase.getInstance(appContext)
+        return db.photoDao()
+    }
 }

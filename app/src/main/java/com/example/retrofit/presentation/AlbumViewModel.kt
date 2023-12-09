@@ -3,6 +3,7 @@ package com.example.retrofit.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofit.data.PhotoAPIState
+import com.example.retrofit.data.model.Photo
 import com.example.retrofit.domain.IRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,12 @@ class AlbumViewModel  @Inject constructor(private val repository: IRepository): 
             }.collectLatest{ photos->
                 _photos.value= PhotoAPIState.Success(photos)
             }
+        }
+    }
+
+    fun insertPhoto(photo:Photo){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.insertPhoto(photo)
         }
     }
 }

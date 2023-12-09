@@ -8,4 +8,6 @@
     <string name="profile">Profile</string>
     <string name="my_albums">My Albums</string>
     <string name="search_hint_album">Search in images..</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

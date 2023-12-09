@@ -88,6 +88,8 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
 
+    //material dialog
+    implementation 'com.afollestad.material-dialogs:input:3.3.0'
 
 
 

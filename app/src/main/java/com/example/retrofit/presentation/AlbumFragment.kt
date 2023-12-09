@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.retrofit.data.PhotoAPIState
+import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.FragmentAlbumBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AlbumFragment : Fragment() {
+class AlbumFragment : Fragment(),OnPhotoClickListener {
 
     private var _binding: FragmentAlbumBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
@@ -34,7 +35,7 @@ class AlbumFragment : Fragment() {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         binding.title.text=args.album
         //setup recycler view
-        albumAdapter  = AlbumAdapter()
+        albumAdapter  = AlbumAdapter(this)
         binding.recyclerviewPhotos.adapter=albumAdapter
         albumViewModel.getPhotos()
         lifecycleScope.launch {
@@ -64,5 +65,9 @@ class AlbumFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onPhotoClick(photo: Photo) {
+        albumViewModel.insertPhoto(photo)
     }
 }

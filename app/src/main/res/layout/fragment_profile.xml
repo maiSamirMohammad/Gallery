@@ -49,12 +49,21 @@
         app:layout_constraintStart_toEndOf="@+id/guideline_start"
         app:layout_constraintTop_toBottomOf="@+id/guideline_top" />
 
+    <Button
+        android:id="@+id/btn_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/favorite"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/guideline_end"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_top" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="Leanne Graham"
+        android:text="@string/leanne_graham"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -66,7 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="Kulas Light, Apt. 556, Gwenborough, 92998-3874"
+        android:text="@string/kulas_light_apt_556_gwenborough_92998_3874"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_start"

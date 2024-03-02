@@ -55,6 +55,10 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+        binding.btnFavorite.setOnClickListener {
+            val action =ProfileFragmentDirections.actionProfileFragmentToFavoriteFragment()
+            androidx.navigation.Navigation.findNavController(binding.root).navigate(action)
+        }
         return binding.root
     }
 

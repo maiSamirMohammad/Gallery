@@ -69,7 +69,7 @@ class AlbumAdapter (val listener:OnPhotoClickListener): RecyclerView.Adapter<Alb
                 }catch (e:Exception){
                     Toast.makeText(binding.root.context,"${e.message}",Toast.LENGTH_LONG).show()
                 }finally {
-                    dialog.findViewById<ProgressBar>(R.id.progress_bar).visibility= View.VISIBLE
+                    dialog.findViewById<ProgressBar>(R.id.progress_bar).visibility= View.GONE
                     dialog.dismiss()
                 }
                  }

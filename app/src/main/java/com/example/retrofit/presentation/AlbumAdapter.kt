@@ -16,7 +16,7 @@ import com.example.retrofit.R
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.ItemPhotoBinding
 
-class AlbumAdapter (val listener:OnPhotoClickListener): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter (val listener:OnSavePhotoClickListener): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     lateinit var binding: ItemPhotoBinding
     private var oldPhotoList= emptyList<Photo>()
 
@@ -65,7 +65,7 @@ class AlbumAdapter (val listener:OnPhotoClickListener): RecyclerView.Adapter<Alb
             dialog.findViewById<Button>(R.id.btn_save).setOnClickListener {
                 dialog.findViewById<ProgressBar>(R.id.progress_bar).visibility= View.VISIBLE
                 try {
-                    listener.onPhotoClick(currentPhoto)
+                    listener.onSaveClick(currentPhoto)
                 }catch (e:Exception){
                     Toast.makeText(binding.root.context,"${e.message}",Toast.LENGTH_LONG).show()
                 }finally {

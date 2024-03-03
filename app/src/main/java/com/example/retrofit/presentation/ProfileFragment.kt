@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import com.example.retrofit.R
 import com.example.retrofit.data.AlbumAPIState
 import com.example.retrofit.databinding.FragmentProfileBinding
 import com.google.android.material.snackbar.Snackbar
@@ -56,8 +58,7 @@ class ProfileFragment : Fragment() {
             }
         }
         binding.btnFavorite.setOnClickListener {
-            val action =ProfileFragmentDirections.actionProfileFragmentToFavoriteFragment()
-            androidx.navigation.Navigation.findNavController(binding.root).navigate(action)
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_favoriteFragment)
         }
         return binding.root
     }

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.retrofit.data.PhotoAPIState
@@ -19,7 +18,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AlbumFragment : Fragment(),OnPhotoClickListener {
+class AlbumFragment : Fragment(),OnSavePhotoClickListener {
 
     private var _binding: FragmentAlbumBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
@@ -67,7 +66,7 @@ class AlbumFragment : Fragment(),OnPhotoClickListener {
         _binding = null
     }
 
-    override fun onPhotoClick(photo: Photo) {
+    override fun onSaveClick(photo: Photo) {
         albumViewModel.insertPhoto(photo)
     }
 }

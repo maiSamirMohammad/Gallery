@@ -8,4 +8,10 @@
     <string name="profile">Profile</string>
     <string name="my_albums">My Albums</string>
     <string name="search_hint_album">Search in images..</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="leanne_graham">Leanne Graham</string>
+    <string name="kulas_light_apt_556_gwenborough_92998_3874">Kulas Light, Apt. 556, Gwenborough, 92998-3874</string>
+    <string name="favorite">Favorite</string>
+    <string name="delete">Delete</string>
 </resources>

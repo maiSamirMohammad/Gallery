@@ -2,7 +2,7 @@ package com.example.retrofit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.PhotoAPIState
+import com.example.retrofit.data.PhotoLocalState
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.domain.IRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,23 +15,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AlbumViewModel  @Inject constructor(private val repository: IRepository): ViewModel(){
-    private var _photos= MutableStateFlow<PhotoAPIState>(PhotoAPIState.Loading)
+class FavoriteViewModel  @Inject constructor(private val repository: IRepository): ViewModel(){
+    private var _photos= MutableStateFlow<PhotoLocalState>(PhotoLocalState.Loading)
     val photos= _photos.asStateFlow()
-    fun getPhotos()
+    fun getLocalPhotos()
     {
         viewModelScope.launch(Dispatchers.IO){
-            repository.getPhotos().catch { throwable->
-                _photos.value= PhotoAPIState.Failure(throwable)
+            repository.getLocalPhotos().catch { throwable->
+                _photos.value= PhotoLocalState.Failure(throwable)
             }.collectLatest{ photos->
-                _photos.value= PhotoAPIState.Success(photos)
+                _photos.value= PhotoLocalState.Success(photos)
             }
         }
     }
 
-    fun insertPhoto(photo:Photo){
+    fun deletePhoto(photo: Photo){
         viewModelScope.launch(Dispatchers.IO){
-            repository.insertPhoto(photo)
+            repository.deletePhoto(photo)
         }
     }
 }

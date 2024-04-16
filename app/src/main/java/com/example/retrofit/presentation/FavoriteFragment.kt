@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.retrofit.R
-import com.example.retrofit.data.PhotoLocalState
+import com.example.retrofit.domain.utils.PhotoLocalState
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.FragmentFavoriteBinding
 import com.google.android.material.snackbar.Snackbar

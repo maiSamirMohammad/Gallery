@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.retrofit.data.PhotoAPIState
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.databinding.FragmentAlbumBinding
 import com.google.android.material.snackbar.Snackbar

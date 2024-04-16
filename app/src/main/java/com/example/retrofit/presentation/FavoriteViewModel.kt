@@ -2,7 +2,7 @@ package com.example.retrofit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.PhotoLocalState
+import com.example.retrofit.domain.utils.PhotoLocalState
 import com.example.retrofit.data.model.Photo
 import com.example.retrofit.domain.IRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

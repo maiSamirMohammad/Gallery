@@ -1,9 +1,9 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.album
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.repository.IRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +28,7 @@ class AlbumViewModel  @Inject constructor(private val repository: IRepository): 
         }
     }
 
-    fun insertPhoto(photo:Photo){
+    fun insertPhoto(photo: Photo){
         viewModelScope.launch(Dispatchers.IO){
             repository.insertPhoto(photo)
         }

@@ -1,4 +1,4 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.profile
 
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +22,7 @@ class ProfileFragment : Fragment() {
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by viewModels()
-    private lateinit var  profileAdapter:ProfileAdapter
+    private lateinit var  profileAdapter: ProfileAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,

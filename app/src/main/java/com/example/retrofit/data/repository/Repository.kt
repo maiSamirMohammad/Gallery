@@ -1,16 +1,13 @@
 package com.example.retrofit.data.repository
 
 import com.example.retrofit.data.local.ILocalDataSource
-import com.example.retrofit.data.model.Album
-import com.example.retrofit.data.model.AlbumResponse
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.data.model.PhotoResponse
-import com.example.retrofit.data.model.User
-import com.example.retrofit.data.model.UsersResponse
+import com.example.retrofit.domain.entities.AlbumResponse
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.entities.PhotoResponse
+import com.example.retrofit.domain.entities.UsersResponse
 import com.example.retrofit.data.remote.IRemoteDataSource
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 

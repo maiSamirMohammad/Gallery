@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ProfileFragment">
+    tools:context=".presentation.profile.ProfileFragment">
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"

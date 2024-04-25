@@ -1,23 +1,18 @@
 package com.example.retrofit.domain.usecase
 
-import com.example.retrofit.data.model.AlbumResponse
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.domain.entities.AlbumResponse
+import com.example.retrofit.domain.repository.IRepository
 import com.example.retrofit.domain.utils.NetworkResponseState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-interface IGetAlbumsCase {
-    operator fun invoke(userId: Int): Flow<NetworkResponseState<AlbumResponse?>>
-}
+class GetAlbumsUseCase @Inject constructor(private val repository: IRepository)  {
 
-class GetAlbumsCase @Inject constructor(private val repository: IRepository) : IGetAlbumsCase {
-
-    override operator fun invoke(userId:Int) = flow {
+     operator fun invoke(userId:Int) = flow {
         val response = coroutineScope{
             val response = async(Dispatchers.IO){ repository.getAlbums(userId) }
             emit(NetworkResponseState.OnLoading<AlbumResponse?>())

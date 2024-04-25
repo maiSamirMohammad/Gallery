@@ -1,9 +1,9 @@
-package com.example.retrofit.domain
+package com.example.retrofit.domain.repository
 
-import com.example.retrofit.data.model.AlbumResponse
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.data.model.PhotoResponse
-import com.example.retrofit.data.model.UsersResponse
+import com.example.retrofit.domain.entities.AlbumResponse
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.entities.PhotoResponse
+import com.example.retrofit.domain.entities.UsersResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 

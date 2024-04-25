@@ -1,13 +1,12 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retrofit.R
-import com.example.retrofit.data.model.Album
+import com.example.retrofit.domain.entities.Album
 import com.example.retrofit.databinding.ItemAlbumBinding
+import com.example.retrofit.presentation.ProfileFragmentDirections
 
 class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     lateinit var binding: ItemAlbumBinding
@@ -35,7 +34,8 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
         val currentAlbum=oldAlbumList[position]
         viewHolder.binding.title.text=currentAlbum.title
         viewHolder.binding.title.setOnClickListener {
-            val action =ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(currentAlbum.title)
+            val action =
+                ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(currentAlbum.title)
             androidx.navigation.Navigation.findNavController(viewHolder.binding.root).navigate(action)
         }
     }
@@ -44,7 +44,7 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     override fun getItemCount() = oldAlbumList.size
 
     fun setData(newAlbumList:List<Album>){
-        val diffUtil=MyAlbumDiffCallback(oldAlbumList,newAlbumList)
+        val diffUtil= MyAlbumDiffCallback(oldAlbumList,newAlbumList)
         val diffResults=DiffUtil.calculateDiff(diffUtil)
         oldAlbumList=newAlbumList
         diffResults.dispatchUpdatesTo(this)

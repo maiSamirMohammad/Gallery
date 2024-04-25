@@ -1,8 +1,8 @@
-package com.example.retrofit.data.model
+package com.example.retrofit.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.io.Serializable
+
 class PhotoResponse : ArrayList<Photo>()
 @Entity
 data class Photo(
@@ -11,4 +11,4 @@ data class Photo(
     val thumbnailUrl: String,
     val title: String,
     val url: String
-): Serializable
+)

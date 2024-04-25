@@ -1,7 +1,7 @@
 package com.example.retrofit.data.local
 
 import androidx.room.*
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.album
 
 import android.os.Bundle
 import android.util.Log
@@ -9,22 +9,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.FragmentAlbumBinding
+import com.example.retrofit.presentation.AlbumFragmentArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AlbumFragment : Fragment(),OnSavePhotoClickListener {
+class AlbumFragment : Fragment(), OnSavePhotoClickListener {
 
     private var _binding: FragmentAlbumBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-    val args:AlbumFragmentArgs by navArgs()
-    private val albumViewModel:AlbumViewModel by viewModels()
-    private lateinit var  albumAdapter:AlbumAdapter
+    val args: AlbumFragmentArgs by navArgs()
+    private val albumViewModel: AlbumViewModel by viewModels()
+    private lateinit var  albumAdapter: AlbumAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -1,6 +1,4 @@
-package com.example.retrofit.data.model
-
-import java.io.Serializable
+package com.example.retrofit.domain.entities
 
 data class Address(
     val city: String,
@@ -8,4 +6,4 @@ data class Address(
     val street: String,
     val suite: String,
     val zipcode: String
-): Serializable
+)

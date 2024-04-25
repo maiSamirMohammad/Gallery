@@ -1,7 +1,7 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.album
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 
 class MyPhotosDiffCallback (
     private val  oldList: List<Photo>,

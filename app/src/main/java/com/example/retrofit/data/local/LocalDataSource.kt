@@ -1,7 +1,6 @@
 package com.example.retrofit.data.local
 
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.data.remote.IRemoteDataSource
+import com.example.retrofit.domain.entities.Photo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

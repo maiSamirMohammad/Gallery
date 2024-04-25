@@ -1,6 +1,5 @@
-package com.example.retrofit.data.model
+package com.example.retrofit.domain.entities
 
-import java.io.Serializable
 
 class UsersResponse : ArrayList<User>()
 data class User(
@@ -12,4 +11,4 @@ data class User(
     val phone: String,
     val username: String,
     val website: String
-): Serializable
+)

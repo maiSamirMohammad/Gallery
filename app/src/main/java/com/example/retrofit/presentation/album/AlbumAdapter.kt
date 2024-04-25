@@ -1,4 +1,4 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.album
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +13,10 @@ import coil.api.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.example.retrofit.R
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.ItemPhotoBinding
 
-class AlbumAdapter (val listener:OnSavePhotoClickListener): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter (val listener: OnSavePhotoClickListener): RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
     lateinit var binding: ItemPhotoBinding
     private var oldPhotoList= emptyList<Photo>()
 
@@ -81,7 +81,7 @@ class AlbumAdapter (val listener:OnSavePhotoClickListener): RecyclerView.Adapter
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = oldPhotoList.size
     fun setData(newPhotoList:List<Photo>){
-        val diffUtil=MyPhotosDiffCallback(oldPhotoList,newPhotoList)
+        val diffUtil= MyPhotosDiffCallback(oldPhotoList,newPhotoList)
         val diffResults= DiffUtil.calculateDiff(diffUtil)
         oldPhotoList=newPhotoList
         diffResults.dispatchUpdatesTo(this)

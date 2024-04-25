@@ -1,4 +1,4 @@
-package com.example.retrofit.data
+package com.example.retrofit.data.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

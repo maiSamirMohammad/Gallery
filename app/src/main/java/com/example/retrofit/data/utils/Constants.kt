@@ -1,4 +1,4 @@
-package com.example.retrofit.data
+package com.example.retrofit.data.utils
 
 object Constants {
     const val BASE_URL = "https://jsonplaceholder.typicode.com"

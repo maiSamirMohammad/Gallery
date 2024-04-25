@@ -1,11 +1,11 @@
 package com.example.retrofit.data.remote
 
-import com.example.retrofit.data.Constants.ALBUM_END_POINT
-import com.example.retrofit.data.Constants.PHOTO_END_POINT
-import com.example.retrofit.data.Constants.USER_END_POINT
-import com.example.retrofit.data.model.AlbumResponse
-import com.example.retrofit.data.model.PhotoResponse
-import com.example.retrofit.data.model.UsersResponse
+import com.example.retrofit.data.utils.Constants.ALBUM_END_POINT
+import com.example.retrofit.data.utils.Constants.PHOTO_END_POINT
+import com.example.retrofit.data.utils.Constants.USER_END_POINT
+import com.example.retrofit.domain.entities.AlbumResponse
+import com.example.retrofit.domain.entities.PhotoResponse
+import com.example.retrofit.domain.entities.UsersResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

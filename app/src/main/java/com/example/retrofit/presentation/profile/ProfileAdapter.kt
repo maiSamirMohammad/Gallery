@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retrofit.domain.entities.Album
 import com.example.retrofit.databinding.ItemAlbumBinding
 import com.example.retrofit.domain.entities.AlbumResponse
-import com.example.retrofit.presentation.ProfileFragmentDirections
 
 class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     lateinit var binding: ItemAlbumBinding

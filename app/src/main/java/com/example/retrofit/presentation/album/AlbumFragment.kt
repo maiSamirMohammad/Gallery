@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.FragmentAlbumBinding
 import com.example.retrofit.domain.utils.NetworkResponseState
-import com.example.retrofit.presentation.AlbumFragmentArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

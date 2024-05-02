@@ -75,7 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/kulas_light_apt_556_gwenborough_92998_3874"
+        tools:text="@string/kulas_light_apt_556_gwenborough_92998_3874"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/guideline_start"

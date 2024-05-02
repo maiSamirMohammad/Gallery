@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit.domain.entities.Album
 import com.example.retrofit.databinding.ItemAlbumBinding
+import com.example.retrofit.domain.entities.AlbumResponse
 import com.example.retrofit.presentation.ProfileFragmentDirections
 
 class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     lateinit var binding: ItemAlbumBinding
-    private var oldAlbumList= emptyList<Album>()
+    private var oldAlbumList= AlbumResponse()
 
     /**
      * Provide a reference to the type of views that you are using
@@ -43,10 +44,10 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = oldAlbumList.size
 
-    fun setData(newAlbumList:List<Album>){
+    fun setData(newAlbumList: AlbumResponse?){
         val diffUtil= MyAlbumDiffCallback(oldAlbumList,newAlbumList)
         val diffResults=DiffUtil.calculateDiff(diffUtil)
-        oldAlbumList=newAlbumList
+        oldAlbumList=newAlbumList!!
         diffResults.dispatchUpdatesTo(this)
     }
 

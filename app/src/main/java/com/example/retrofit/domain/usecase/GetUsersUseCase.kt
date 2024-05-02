@@ -15,7 +15,7 @@ class GetUsersUseCase @Inject constructor(private val repository: IRepository) {
      operator fun invoke() = flow {
         val response = coroutineScope{
             val response = async(Dispatchers.IO){ repository.getUsers() }
-            emit(NetworkResponseState.OnLoading<UsersResponse?>())
+            emit(NetworkResponseState.OnLoading())
             response.await()
         }
 

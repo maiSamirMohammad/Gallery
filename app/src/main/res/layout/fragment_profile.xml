@@ -63,7 +63,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/leanne_graham"
+        tools:text="@string/leanne_graham"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"

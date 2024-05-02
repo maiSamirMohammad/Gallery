@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.retrofit.R
 import com.example.retrofit.databinding.FragmentProfileBinding
+import com.example.retrofit.domain.utils.NetworkResponseState
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -33,29 +34,74 @@ class ProfileFragment : Fragment() {
         //setup recycler view
         profileAdapter  = ProfileAdapter()
         binding.recyclerviewAlbums.adapter=profileAdapter
-        profileViewModel.getAlbums()
+        profileViewModel.getRandomUser()
+
         lifecycleScope.launch {
-            profileViewModel.albums.collectLatest {apiResult ->
+            profileViewModel.user.collectLatest {apiResult ->
                 when(apiResult)  {
-                    is AlbumAPIState.Loading ->{
+                    is NetworkResponseState.OnLoading ->{
                         binding.progressBar.visibility= View.VISIBLE
                     }
-                    is AlbumAPIState.Success ->{
+                    is NetworkResponseState.OnSuccess ->{
                         binding.progressBar.visibility= View.GONE
-                        profileAdapter.setData(apiResult.data)
+                        binding.name.text=apiResult.data!![1].name
+                        //lifecycleScope.launch {
+                            profileViewModel.albums.collectLatest {albumResult ->
+                                when(albumResult)  {
+                                    is NetworkResponseState.OnLoading ->{
+                                        binding.progressBar.visibility= View.VISIBLE
+                                    }
+                                    is NetworkResponseState.OnSuccess ->{
+                                        binding.progressBar.visibility= View.GONE
+                                        profileAdapter.setData(albumResult.data)
+                                    }
+                                    is NetworkResponseState.OnError ->{
+                                        binding.progressBar.visibility= View.GONE
+                                        Log.e("TAG", "error==========:${albumResult.error.message} ")
+                                        Snackbar.make(activity?.window?.decorView!!.rootView,
+                                            "Try another time as ${albumResult.error.message}",
+                                            Snackbar.LENGTH_LONG)
+                                            .setBackgroundTint(resources.getColor(android.R.color.holo_orange_light))
+                                            .show()
+                                    }
+
+                                    is NetworkResponseState.OnNetworkErrorResponse -> {
+                                        binding.progressBar.visibility= View.GONE
+                                        Log.e("TAG", "error :${albumResult.statusCode} ")
+                                        Snackbar.make(activity?.window?.decorView!!.rootView,
+                                            "Error ${albumResult.statusCode}",
+                                            Snackbar.LENGTH_LONG)
+                                            .setBackgroundTint(resources.getColor(android.R.color.holo_red_dark))
+                                            .show()
+                                    }
+                                }
+                            }
+                        //}
                     }
-                    is AlbumAPIState.Failure ->{
+                    is NetworkResponseState.OnError ->{
                         binding.progressBar.visibility= View.GONE
-                        Log.e("TAG", "error==========:${apiResult.throwable.message} ")
+                        Log.e("TAG", "error==========:${apiResult.error.message} ")
                         Snackbar.make(activity?.window?.decorView!!.rootView,
-                            "Try another time as ${apiResult.throwable.message}",
+                            "Try another time as ${apiResult.error.message}",
                             Snackbar.LENGTH_LONG)
                             .setBackgroundTint(resources.getColor(android.R.color.holo_orange_light))
+                            .show()
+                    }
+
+                    is NetworkResponseState.OnNetworkErrorResponse -> {
+                        binding.progressBar.visibility= View.GONE
+                        Log.e("TAG", "error :${apiResult.statusCode} ")
+                        Snackbar.make(activity?.window?.decorView!!.rootView,
+                            "Error ${apiResult.statusCode}",
+                            Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(resources.getColor(android.R.color.holo_red_dark))
                             .show()
                     }
                 }
             }
         }
+
+
         binding.btnFavorite.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_favoriteFragment)
         }

@@ -9,11 +9,12 @@ import coil.api.load
 import com.example.retrofit.R
 import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.ItemFavoriteBinding
+import com.example.retrofit.domain.entities.PhotoResponse
 import com.example.retrofit.presentation.album.MyPhotosDiffCallback
 
 class FavoriteAdapter(val listener: OnDeletePhotoClickListener): RecyclerView.Adapter<FavoriteAdapter.ViewHolder>()  {
     lateinit var binding: ItemFavoriteBinding
-    private var oldPhotoList= emptyList<Photo>()
+    private var oldPhotoList= PhotoResponse()
 
     // Replace the contents of a view (invoked by the layout manager)
     class ViewHolder(var binding: ItemFavoriteBinding) : RecyclerView.ViewHolder(binding.root)
@@ -47,10 +48,10 @@ class FavoriteAdapter(val listener: OnDeletePhotoClickListener): RecyclerView.Ad
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = oldPhotoList.size
-    fun setData(newPhotoList:List<Photo>){
+    fun setData(newPhotoList:PhotoResponse?){
         val diffUtil= MyPhotosDiffCallback(oldPhotoList,newPhotoList)
         val diffResults= DiffUtil.calculateDiff(diffUtil)
-        oldPhotoList=newPhotoList
+        oldPhotoList=newPhotoList!!
         diffResults.dispatchUpdatesTo(this)
     }
 }

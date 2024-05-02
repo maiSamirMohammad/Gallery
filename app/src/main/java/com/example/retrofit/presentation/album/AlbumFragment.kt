@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.FragmentAlbumBinding
+import com.example.retrofit.domain.utils.NetworkResponseState
 import com.example.retrofit.presentation.AlbumFragmentArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,33 +33,45 @@ class AlbumFragment : Fragment(), OnSavePhotoClickListener {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
-        binding.title.text=args.album
+        binding.title.text=args.album.title
         //setup recycler view
         albumAdapter  = AlbumAdapter(this)
         binding.recyclerviewPhotos.adapter=albumAdapter
-        albumViewModel.getPhotos()
+        albumViewModel.getPhotos(args.album.id)
         lifecycleScope.launch {
             albumViewModel.photos.collectLatest {apiResult ->
                 when(apiResult)  {
-                    is PhotoAPIState.Loading ->{
+                    is NetworkResponseState.OnLoading ->{
                         binding.progressBar.visibility= View.VISIBLE
                     }
-                    is PhotoAPIState.Success ->{
+                    is NetworkResponseState.OnSuccess ->{
                         binding.progressBar.visibility= View.GONE
                         albumAdapter.setData(apiResult.data)
                     }
-                    is PhotoAPIState.Failure ->{
+                    is NetworkResponseState.OnError ->{
                         binding.progressBar.visibility= View.GONE
-                        Log.e("TAG", "error==========:${apiResult.throwable.message} ")
+                        Log.e("TAG", "error==========:${apiResult.error.message} ")
                         Snackbar.make(activity?.window?.decorView!!.rootView,
-                            "Try another time as ${apiResult.throwable.message}",
+                            "Try another time as ${apiResult.error.message}",
                             Snackbar.LENGTH_LONG)
                             .setBackgroundTint(resources.getColor(android.R.color.holo_orange_light))
                             .show()
                     }
+
+                    is NetworkResponseState.OnNetworkErrorResponse -> {
+                        binding.progressBar.visibility= View.GONE
+                        Log.e("TAG", "error :${apiResult.statusCode} ")
+                        Snackbar.make(activity?.window?.decorView!!.rootView,
+                            "Error ${apiResult.statusCode}",
+                            Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(resources.getColor(android.R.color.holo_red_dark))
+                            .show()
+                    }
                 }
             }
-        }
+                }
+
+
         return binding.root
     }
     override fun onDestroyView() {

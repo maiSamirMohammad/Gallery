@@ -36,7 +36,7 @@ class ProfileAdapter : RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
         viewHolder.binding.title.text=currentAlbum.title
         viewHolder.binding.title.setOnClickListener {
             val action =
-                ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(currentAlbum.title)
+                ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(currentAlbum)
             androidx.navigation.Navigation.findNavController(viewHolder.binding.root).navigate(action)
         }
     }

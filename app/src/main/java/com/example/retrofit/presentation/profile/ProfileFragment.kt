@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
                     }
                     is NetworkResponseState.OnSuccess ->{
                         binding.progressBar.visibility= View.GONE
-                        binding.name.text=apiResult.data!![1].name
+                        binding.name.text=apiResult.data!![0].name
                         //lifecycleScope.launch {
                             profileViewModel.albums.collectLatest {albumResult ->
                                 when(albumResult)  {

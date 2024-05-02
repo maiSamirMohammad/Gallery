@@ -9,7 +9,6 @@ import com.example.retrofit.data.local.LocalDataSource
 import com.example.retrofit.data.local.PhotoDao
 import com.example.retrofit.data.remote.IRemoteDataSource
 import com.example.retrofit.data.remote.RemoteDataSource
-import com.example.retrofit.domain.usecase.GetUsersCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

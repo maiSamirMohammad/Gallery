@@ -27,7 +27,8 @@
         <action
             android:id="@+id/action_albumFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <argument android:name="album" />
+        <argument android:name="album"
+            app:argType="com.example.retrofit.domain.entities.Album" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"

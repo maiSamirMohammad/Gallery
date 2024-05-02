@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetPhotosUseCase @Inject constructor(private val repository: IRepository) {
+class GetPhotosUseCase @Inject constructor( val repository: IRepository) {
 
      operator fun invoke(albumId:Int) = flow {
         val response = coroutineScope{

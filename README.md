@@ -11,7 +11,9 @@ An android app that displays the user's gallery from an API and the favorite pho
 
 <h2>Technologies Used:</h2>
 *Android Studio.
-* Kotlin.
+<hr>
+- Kotlin.
+<hr>
 * Retrofit.
 * DiffUtil.
 * Flow with coroutine.
@@ -30,3 +32,4 @@ An android app that displays the user's gallery from an API and the favorite pho
 <hr>
 <h2>Contributers:</h2>
 - <a href="https://www.linkedin.com/in/mai-samir-a8204420b"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mai%20Samir-blue?style=flat-square&logo=linkedin"></a>
+<hr>

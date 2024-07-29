@@ -12,3 +12,4 @@ An android app that displays the user's gallery from an API and the favorite pho
 * Navigation component
 * MVVM
 * Clean Architecture
+<hr>

@@ -1,5 +1,4 @@
 # Gallery
---------------
 An android app that displays the user's gallery from an API and the favorite photos from a local storage.
 <hr>
 
@@ -11,27 +10,27 @@ An android app that displays the user's gallery from an API and the favorite pho
 - Android Studio.
 <br>
 - Kotlin.
-<hr>
+<br>
 - Retrofit.
-<hr>
+<br>
 - DiffUtil.
-<hr>
+<br>
 - Flow with coroutine.
-<hr>
+<br>
 - Dependency Injection.
-<hr>
+<br>
 - Room.
-<hr>
+<br>
 - Navigation component.
-<hr>
+<br>
 - MVVM.
-<hr>
+<br>
 - Clean Architecture.
 <hr>
 
 <h2>Code reviewer:</h2>
 - <a href="https://www.linkedin.com/in/devmohamed/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mohamed%20Arafa-blue?style=flat-square&logo=linkedin"></a>
-<hr>
+<br>
 <h2>Contributer:</h2>
 - <a href="https://www.linkedin.com/in/mai-samir-a8204420b"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mai%20Samir-blue?style=flat-square&logo=linkedin"></a>
 <hr>

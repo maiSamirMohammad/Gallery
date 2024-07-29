@@ -8,25 +8,30 @@ An android app that displays the user's gallery from an API and the favorite pho
 <hr>
 
 <h2>Technologies Used:</h2>
-* Android Studio.
+- Android Studio.
 <hr>
 - Kotlin.
 <hr>
-* Retrofit.
-* DiffUtil.
-* Flow with coroutine.
-* Dependency Injection.
-* Room.
-* Navigation component.
-* MVVM.
-* Clean Architecture.
-
+- Retrofit.
+<hr>
+- DiffUtil.
+<hr>
+- Flow with coroutine.
+<hr>
+- Dependency Injection.
+<hr>
+- Room.
+<hr>
+- Navigation component.
+<hr>
+- MVVM.
+<hr>
+- Clean Architecture.
 <hr>
 
 <h2>Code reviewer:</h2>
-
 - <a href="https://www.linkedin.com/in/devmohamed/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mohamed%20Arafa-blue?style=flat-square&logo=linkedin"></a>
 <hr>
-<h2>Contributers:</h2>
+<h2>Contributer:</h2>
 - <a href="https://www.linkedin.com/in/mai-samir-a8204420b"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mai%20Samir-blue?style=flat-square&logo=linkedin"></a>
 <hr>

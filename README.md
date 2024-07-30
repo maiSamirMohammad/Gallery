@@ -9,9 +9,7 @@ An android app that displays the user's gallery from an API and the favorite pho
 <h2>Technologies Used:</h2>
 
 - Android Studio.
-
 - Kotlin.
-
 - Retrofit.
 
 - DiffUtil.

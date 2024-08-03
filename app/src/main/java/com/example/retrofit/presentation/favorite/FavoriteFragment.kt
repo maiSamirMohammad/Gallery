@@ -1,4 +1,4 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.favorite
 
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.retrofit.R
-import com.example.retrofit.data.PhotoLocalState
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.utils.PhotoLocalState
+import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.FragmentFavoriteBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,11 +17,11 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment(),OnDeletePhotoClickListener  {
+class FavoriteFragment : Fragment(), OnDeletePhotoClickListener {
     private var _binding: FragmentFavoriteBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-    private val favoriteViewModel:FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
     private lateinit var  favoriteAdapter: FavoriteAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

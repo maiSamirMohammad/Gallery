@@ -1,4 +1,4 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,23 +7,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.example.retrofit.R
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 import com.example.retrofit.databinding.ItemFavoriteBinding
+import com.example.retrofit.presentation.album.MyPhotosDiffCallback
 
-class FavoriteAdapter(val listener:OnDeletePhotoClickListener): RecyclerView.Adapter<FavoriteAdapter.ViewHolder>()  {
+class FavoriteAdapter(val listener: OnDeletePhotoClickListener): RecyclerView.Adapter<FavoriteAdapter.ViewHolder>()  {
     lateinit var binding: ItemFavoriteBinding
     private var oldPhotoList= emptyList<Photo>()
 
     // Replace the contents of a view (invoked by the layout manager)
     class ViewHolder(var binding: ItemFavoriteBinding) : RecyclerView.ViewHolder(binding.root)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val inflater= LayoutInflater.from(parent.context)
         binding= ItemFavoriteBinding.inflate(inflater, parent, false)
-        return FavoriteAdapter.ViewHolder(binding)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FavoriteAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         val currentPhoto=oldPhotoList[position]
@@ -47,7 +48,7 @@ class FavoriteAdapter(val listener:OnDeletePhotoClickListener): RecyclerView.Ada
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = oldPhotoList.size
     fun setData(newPhotoList:List<Photo>){
-        val diffUtil=MyPhotosDiffCallback(oldPhotoList,newPhotoList)
+        val diffUtil= MyLocalPhotosDiffCallback(oldPhotoList,newPhotoList)
         val diffResults= DiffUtil.calculateDiff(diffUtil)
         oldPhotoList=newPhotoList
         diffResults.dispatchUpdatesTo(this)

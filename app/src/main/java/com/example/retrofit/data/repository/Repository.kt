@@ -1,36 +1,39 @@
 package com.example.retrofit.data.repository
 
-import com.example.retrofit.data.local.PhotoDao
-import com.example.retrofit.data.model.Album
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.data.remote.APIService
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.data.local.ILocalDataSource
+import com.example.retrofit.domain.entities.AlbumResponse
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.entities.PhotoResponse
+import com.example.retrofit.domain.entities.UsersResponse
+import com.example.retrofit.data.remote.IRemoteDataSource
+import com.example.retrofit.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import retrofit2.Response
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-/* TODO add service api in constructor*/
-     private val apiService: APIService,
-     private val photoDao: PhotoDao
+     private val remoteDataSource: IRemoteDataSource,
+     private val localDataSource: ILocalDataSource
 ) : IRepository {
-    
-    // TODO call retrofit service
-     override suspend fun getAlbums(): Flow<List<Album>> {
-        return flow { emit(apiService.getAlbums()) } 
+    //remote
+    override suspend fun getUsers(): Response<UsersResponse> {
+        return remoteDataSource.getUsers()
+    }
+     override suspend fun getAlbums(userId: Int): Response<AlbumResponse>{
+        return remoteDataSource.getAlbums(userId)
      }
-    override suspend fun getPhotos(): Flow<List<Photo>> {
-        return flow { emit(apiService.getPhotos()) }
+    override suspend fun getPhotos(albumId:Int): Response<PhotoResponse> {
+        return remoteDataSource.getPhotos(albumId)
         }
     //local
     override fun getLocalPhotos(): Flow<List<Photo>> {
-        return photoDao.getAllPhotos()
+        return localDataSource.getLocalPhotos()
     }
     override suspend fun insertPhoto(photo: Photo): Long {
-        return photoDao.insertPhoto(photo)
+        return localDataSource.insertPhoto(photo)
     }
     override suspend fun deletePhoto(photo: Photo) {
-        photoDao.deletePhoto(photo)
+        localDataSource.deletePhoto(photo)
     }
 
 }

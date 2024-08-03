@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
 
 @Database(entities = [Photo::class], version = 1)
 abstract class AppDataBase: RoomDatabase() {

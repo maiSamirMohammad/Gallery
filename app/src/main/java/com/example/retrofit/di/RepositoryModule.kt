@@ -1,7 +1,7 @@
 package com.example.retrofit.di
 
 import com.example.retrofit.data.repository.Repository
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.domain.repository.IRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindRepository(repository: Repository):IRepository
+    abstract fun bindRepository(repository: Repository): IRepository
 }

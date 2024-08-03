@@ -1,8 +1,9 @@
-package com.example.retrofit.data.model
+package com.example.retrofit.domain.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+class PhotoResponse : ArrayList<Photo>()
 @Entity
 data class Photo(
     val albumId: Int,

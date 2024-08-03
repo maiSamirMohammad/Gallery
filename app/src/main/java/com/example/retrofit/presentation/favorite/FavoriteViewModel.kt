@@ -1,10 +1,10 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofit.data.PhotoLocalState
-import com.example.retrofit.data.model.Photo
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.domain.utils.PhotoLocalState
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.repository.IRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

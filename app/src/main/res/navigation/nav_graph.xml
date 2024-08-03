@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.retrofit.presentation.ProfileFragment"
+        android:name="com.example.retrofit.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -21,17 +21,18 @@
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.example.retrofit.presentation.AlbumFragment"
+        android:name="com.example.retrofit.presentation.album.AlbumFragment"
         android:label="fragment_album"
         tools:layout="@layout/fragment_album" >
         <action
             android:id="@+id/action_albumFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <argument android:name="album" />
+        <argument android:name="album"
+            app:argType="com.example.retrofit.domain.entities.Album" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.retrofit.presentation.FavoriteFragment"
+        android:name="com.example.retrofit.presentation.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
         <action

@@ -1,11 +1,14 @@
-package com.example.retrofit.presentation
+package com.example.retrofit.presentation.favorite
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.retrofit.data.model.Photo
+import com.example.retrofit.domain.entities.Photo
+import com.example.retrofit.domain.entities.PhotoResponse
 
-class MyPhotosDiffCallback (
-    private val  oldList: List<Photo>,
-    private val  newList: List<Photo>
+class MyLocalPhotosDiffCallback (
+    private val  oldList:
+    List<Photo>,
+    private val  newList:
+    List<Photo>
 ): DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {

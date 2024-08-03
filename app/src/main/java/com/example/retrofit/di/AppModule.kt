@@ -2,11 +2,13 @@ package com.example.retrofit.di
 
 import android.app.Application
 import com.example.retrofit.data.remote.APIService
-import com.example.retrofit.data.Constants
+import com.example.retrofit.data.utils.Constants
 import com.example.retrofit.data.local.AppDataBase
+import com.example.retrofit.data.local.ILocalDataSource
+import com.example.retrofit.data.local.LocalDataSource
 import com.example.retrofit.data.local.PhotoDao
-import com.example.retrofit.data.repository.Repository
-import com.example.retrofit.domain.IRepository
+import com.example.retrofit.data.remote.IRemoteDataSource
+import com.example.retrofit.data.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,4 +36,17 @@ object AppModule {
         val db: AppDataBase =AppDataBase.getInstance(appContext)
         return db.photoDao()
     }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(): IRemoteDataSource {
+        return RemoteDataSource(provideAPIService())
+    }
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(appContext:Application): ILocalDataSource {
+        return LocalDataSource(providePhotoDao(appContext))
+    }
+
+
 }

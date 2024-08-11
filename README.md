@@ -33,3 +33,6 @@ An android app that displays the user's gallery from an API and the favorite pho
 <h2>Contributer:</h2>
 - <a href="https://www.linkedin.com/in/mai-samir-a8204420b"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Mai%20Samir-blue?style=flat-square&logo=linkedin"></a>
 <hr>
+
+
+![thumbnail](https://github.com/user-attachments/assets/9fd3f861-b513-4892-bf1b-76c9ac71b4c0)
